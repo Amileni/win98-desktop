@@ -1,0 +1,35 @@
+# Dependencies
+/node_modules
+
+# Build output
+/.next
+/out
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode
+.idea
+
+# Next.js
+.next/
+*.log
+
+# Mac system files
+Icon?

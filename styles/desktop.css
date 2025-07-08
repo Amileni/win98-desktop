@@ -1,15 +1,19 @@
 .desktop {
-  background-color: #008080;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  overflow: hidden;
+  background-color: #008080;
+  padding: 12px;
+  box-sizing: border-box;
 }
 
 .icon {
   width: 72px;
   text-align: center;
+  font-family: Tahoma, sans-serif;
   color: white;
   cursor: pointer;
 }
@@ -29,4 +33,47 @@
   padding: 4px;
   display: flex;
   justify-content: space-between;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: #c0c0c0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  font-family: Tahoma, sans-serif;
+  font-size: 13px;
+  z-index: 10;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  background: #dcdcdc;
+  border: 2px outset white;
+  padding: 2px 8px;
+  font-weight: bold;
+  font-family: Tahoma, sans-serif;
+  font-size: 13px;
+  height: 28px;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.start img {
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  margin-left: 8px;
+  color: black;
 }

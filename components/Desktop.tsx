@@ -1,10 +1,12 @@
 'use client';
 
+import "@/styles/desktop.css";
 import { useEffect, useState } from "react";
 import { fetchIcons } from "@/lib/api";
 import Icon from "./Icon";
 import Window from "./Window";
 import { DesktopIcon } from "@/types/icon";
+import Taskbar from "@/components/Taskbar";
 
 export default function Desktop() {
   const [icons, setIcons] = useState<DesktopIcon[]>([]);
@@ -29,6 +31,7 @@ export default function Desktop() {
           <p>Contenu de {openApp.title}</p>
         </Window>
       )}
+      <Taskbar />
     </div>
   );
 }
