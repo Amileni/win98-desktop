@@ -1,0 +1,32 @@
+.desktop {
+  background-color: #008080;
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.icon {
+  width: 72px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.window {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  background: white;
+  border: 2px solid black;
+  width: 300px;
+}
+
+.title-bar {
+  background: navy;
+  color: white;
+  padding: 4px;
+  display: flex;
+  justify-content: space-between;
+}
