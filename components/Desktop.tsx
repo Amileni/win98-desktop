@@ -6,6 +6,7 @@ import { fetchIcons } from "@/lib/api";
 import Icon from "./Icon";
 import Window from "./Window";
 import { DesktopIcon } from "@/types/icon";
+import { IconType } from "@/types/iconType";
 import Taskbar from "@/components/Taskbar";
 
 export default function Desktop() {
@@ -16,13 +17,21 @@ export default function Desktop() {
     fetchIcons().then(setIcons);
   }, []);
 
+  const handleIconDoubleClick = (icon: DesktopIcon) => {
+    if (icon.type === IconType.Redirect) {
+      window.open(icon.target, "_blank");
+    } else if (icon.type === IconType.Page) {
+      setOpenApp(icon);
+    }
+  };
+
   return (
     <div className="desktop">
       {icons.map((icon) => (
         <Icon
           key={icon.id}
           icon={icon}
-          onDoubleClick={() => setOpenApp(icon)}
+          onDoubleClick={() => handleIconDoubleClick(icon)}
         />
       ))}
 
