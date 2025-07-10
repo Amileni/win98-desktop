@@ -12,21 +12,37 @@ import Taskbar from "@/components/Taskbar";
 export default function Desktop() {
   const [icons, setIcons] = useState<DesktopIcon[]>([]);
   const [openApp, setOpenApp] = useState<DesktopIcon | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchIcons().then(setIcons);
   }, []);
 
-  const handleIconDoubleClick = (icon: DesktopIcon) => {
-    if (icon.type === IconType.Redirect) {
-      window.open(icon.target, "_blank");
-    } else if (icon.type === IconType.Page) {
-      setOpenApp(icon);
+  useEffect(() => {
+    const body = document.body;
+    if (isLoading) {
+      body.classList.add("loading");
+    } else {
+      body.classList.remove("loading");
     }
+  }, [isLoading]);
+
+  const handleIconDoubleClick = (icon: DesktopIcon) => {
+    setIsLoading(true); // active le curseur de chargement
+
+    setTimeout(() => {
+      setIsLoading(false); // désactive après 500ms
+
+      if (icon.type === IconType.Redirect) {
+        window.open(icon.target, "_blank");
+      } else if (icon.type === IconType.Page) {
+        setOpenApp(icon);
+      }
+    }, Math.random() * 500 + 500); // délai aléatoire entre 500 et 1000 ms
   };
 
   return (
-    <div className="desktop">
+    <div className={`desktop ${isLoading ? 'loading' : ''}`}>
       {icons.map((icon) => (
         <Icon
           key={icon.id}
