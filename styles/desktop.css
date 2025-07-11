@@ -22,13 +22,22 @@ body.loading {
   width: 72px;
   text-align: center;
   font-family: Tahoma, sans-serif;
+  padding: 1px;
+  margin-top: 4px;
   color: white;
+}
+
+.icon.selected {
+  background-color: #00008060;
+  border: 1px dotted #ffffff;
+  color: white;
+  padding: 0px;
 }
 
 .icon-title {
   font-size: 12px;
   margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .window {

@@ -8,11 +8,13 @@ import Window from "./Window";
 import { DesktopIcon } from "@/types/icon";
 import { IconType } from "@/types/iconType";
 import Taskbar from "@/components/Taskbar";
+import { simulateLoadingCursor } from "@/utils/simulateLoadingCursor";
 
 export default function Desktop() {
   const [icons, setIcons] = useState<DesktopIcon[]>([]);
   const [openApp, setOpenApp] = useState<DesktopIcon | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedIconId, setSelectedIconId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchIcons().then(setIcons);
@@ -42,12 +44,22 @@ export default function Desktop() {
   };
 
   return (
-    <div className={`desktop ${isLoading ? 'loading' : ''}`}>
+    <div 
+      className={`desktop ${isLoading ? 'loading' : ''}`}
+      onClick={() => setSelectedIconId(null)}
+    >
       {icons.map((icon) => (
         <Icon
           key={icon.id}
           icon={icon}
-          onDoubleClick={() => handleIconDoubleClick(icon)}
+          isSelected={selectedIconId === icon.id}
+          onClick={(e) => {
+            e.stopPropagation(); // empêche la désélection
+            setSelectedIconId(icon.id);
+          }}
+          onDoubleClick={(e) => {
+            setSelectedIconId(null);
+            handleIconDoubleClick(icon);}}
         />
       ))}
 
