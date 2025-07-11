@@ -68,15 +68,18 @@ body.loading {
 .start {
   display: flex;
   align-items: center;
-  background: #dcdcdc;
-  border: 2px outset white;
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #444444;
+  border-bottom: 2px solid #444444;
   padding: 2px 2px;
   font-weight: bold;
   font-family: Tahoma, sans-serif;
   font-size: 12px;
   height: 22px;
   cursor: url("/cursors/win98-click.cur"), pointer;
-  gap: 2px;
+  gap: 4px;
 }
 
 .start img {
