@@ -8,7 +8,7 @@ import Window from "./Window";
 import { DesktopIcon } from "@/types/icon";
 import { IconType } from "@/types/iconType";
 import Taskbar from "@/components/Taskbar";
-import { simulateLoadingCursor } from "@/utils/simulateLoadingCursor";
+import PasswordPrompt from "@/components/PasswordPrompt";
 
 export default function Desktop() {
   const [icons, setIcons] = useState<DesktopIcon[]>([]);
@@ -28,6 +28,11 @@ export default function Desktop() {
       body.classList.remove("loading");
     }
   }, [isLoading]);
+
+  const handlePasswordSuccess = () => {
+  console.log("Action validée pour l’icône :", openApp?.title);
+  // ici tu pourras appeler une méthode attachée à l’icône plus tard
+};
 
   const handleIconDoubleClick = (icon: DesktopIcon) => {
     setIsLoading(true); // active le curseur de chargement
@@ -65,7 +70,14 @@ export default function Desktop() {
 
       {openApp && (
         <Window title={openApp.title} onClose={() => setOpenApp(null)}>
-          <p>Contenu de {openApp.title}</p>
+          <PasswordPrompt 
+            iconId={openApp.id}
+            onSuccess={() => {
+              console.log("Action réussie pour :", openApp.title);
+              // Ici tu pourras ajouter la logique spécifique à chaque icône plus tard
+              setOpenApp(null); // on ferme la fenêtre après succès
+            }} 
+          />
         </Window>
       )}
       <Taskbar />

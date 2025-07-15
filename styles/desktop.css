@@ -6,6 +6,10 @@ body.loading {
   cursor: url("/cursors/win98-loading.cur"), wait !important;
 }
 
+button {
+  cursor: url("/cursors/win98-arrow.cur"), pointer;
+}
+
 .desktop {
   position: fixed;
   top: 0;
