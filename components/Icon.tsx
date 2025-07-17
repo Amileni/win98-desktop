@@ -17,7 +17,7 @@ export default function Icon({ icon, isSelected, onClick, onDoubleClick }: IconP
       onClick={onClick}
       onDoubleClick={onDoubleClick}
     >
-      <img src={icon.imageUrl} alt={icon.title} width={48} height={48} />
+      <img src={icon.imageUrl} alt={icon.title} width={40} height={40} />
       <div className="icon-title">{icon.title}</div>
     </div>
   );

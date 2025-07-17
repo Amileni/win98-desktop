@@ -1,5 +1,16 @@
+@font-face {
+  font-family: 'w95fa';
+  src: url('/fonts/w95font.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: w95fa !important;
+}
+
 body {
-  cursor: url('/cursors/win98-arrow.cur'), default;
+  cursor: url('/cursors/win98-arrow.cur'), default !important;
 }
 
 body.loading {
@@ -8,6 +19,11 @@ body.loading {
 
 button {
   cursor: url("/cursors/win98-arrow.cur"), pointer;
+  background: #dcdcdc;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #4b4b4b;
+  border-bottom: 2px solid #4b4b4b;
 }
 
 .desktop {
@@ -25,7 +41,6 @@ button {
 .icon {
   width: 72px;
   text-align: center;
-  font-family: Tahoma, sans-serif;
   padding: 1px;
   margin-top: 4px;
   color: white;
@@ -42,21 +57,36 @@ button {
   font-size: 12px;
   margin-top: 8px;
   margin-bottom: 4px;
+  color: white;
 }
 
 .window {
   position: absolute;
   top: 100px;
   left: 100px;
-  background: white;
-  border: 2px solid black;
-  width: 300px;
+  background: #dcdcdc;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #4b4b4b;
+  border-bottom: 2px solid #4b4b4b;
+  width: 240px;
+}
+
+.window-body {
+  padding: 1px;
+  background: #dcdcdc;
+  overflow-y: auto;
+}
+
+.window-body > :last-child {
+  margin-left: auto;
 }
 
 .title-bar {
   background: navy;
   color: white;
-  padding: 4px;
+  padding: 3px;
+  margin: 2px;
   display: flex;
   justify-content: space-between;
 }
@@ -88,8 +118,7 @@ button {
   border-bottom: 2px solid #444444;
   padding: 2px 2px;
   font-weight: bold;
-  font-family: Tahoma, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   height: 22px;
   cursor: url("/cursors/win98-click.cur"), pointer;
   gap: 4px;
@@ -113,8 +142,7 @@ button {
 
 
 .task-title {
-  font-family: Tahoma, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   background: #dcdcdc;
   border: 2px inset #fff;
   padding: 2px 6px;
@@ -129,7 +157,6 @@ button {
   border: 1px inset #fff;
   min-width: 48px;
   text-align: center;
-  font-family: Tahoma, sans-serif;
   font-size: 13px;
   height: 22px;
   display: flex;

@@ -9,7 +9,7 @@ export default function Window({ title, children, onClose }: WindowProps) {
     <div className="window">
       <div className="title-bar">
         <span>{title}</span>
-        <button onClick={onClose}>X</button>
+        <img src="windows/window-close.png" alt="Close" onClick={onClose}/>
       </div>
       <div className="window-body">{children}</div>
     </div>

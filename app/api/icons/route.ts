@@ -19,13 +19,13 @@ export async function GET() {
     },
     {
       id: "3",
-      title: "Poste de travail",
+      title: "Desktop",
       imageUrl: "/icons/computer.png",
       type: IconType.Page
     },
     {
       id: "4",
-      title: "Corbeille",
+      title: "Recycle Bin",
       imageUrl: "/icons/trash.png",
       type: IconType.Page
     }

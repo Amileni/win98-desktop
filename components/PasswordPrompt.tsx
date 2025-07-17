@@ -25,9 +25,9 @@ export default function PasswordPrompt({ iconId, onSuccess }: PasswordPromptProp
     if (result.success) {
       onSuccess();
     } else if (result.locked) {
-      setError("Trop de tentatives. Cette application est bloquée.");
+      setError("Too many failed attempts. Please try again later.");
     } else {
-      setError(`Mot de passe incorrect.`);
+      setError("Incorect password.");
     }
   };
 
@@ -38,17 +38,21 @@ export default function PasswordPrompt({ iconId, onSuccess }: PasswordPromptProp
   };
 
   return (
-    <div style={{ padding: '10px' }}>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Mot de passe"
-        style={{ marginRight: '8px', padding: '4px' }}
-      />
-      <button onClick={handleSubmit}>Valider</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div>
+        {error ? 
+        (<p style={{ color: 'red' }}>{error}</p>) :
+        (<p>
+            <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Password"
+                style={{ marginRight: '8px', marginLeft: '8px', padding: '4px', border: '2px inset #fff'}}
+            />
+            <button onClick={handleSubmit}>Submit</button>
+            </p>
+        )}
     </div>
   );
 }
