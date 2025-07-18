@@ -26,6 +26,10 @@ button {
   border-bottom: 2px solid #4b4b4b;
 }
 
+button:active {
+  border: inset 2px #f0f0f0;
+}
+
 .desktop {
   position: fixed;
   top: 0;
@@ -44,6 +48,13 @@ button {
   padding: 1px;
   margin-top: 4px;
   color: white;
+}
+
+.icon img {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto;
 }
 
 .icon.selected {
@@ -87,8 +98,22 @@ button {
   color: white;
   padding: 3px;
   margin: 2px;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
+}
+
+.title-bar img {
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #4b4b4b;
+  border-bottom: 2px solid #4b4b4b;
+}
+
+.title-bar img:active {
+  border: inset 2px #f0f0f0;
 }
 
 .taskbar {
@@ -120,8 +145,11 @@ button {
   font-weight: bold;
   font-size: 14px;
   height: 22px;
-  cursor: url("/cursors/win98-click.cur"), pointer;
   gap: 4px;
+}
+
+.start:active {
+  border: inset 2px #f0f0f0;
 }
 
 .start img {
@@ -157,7 +185,7 @@ button {
   border: 1px inset #fff;
   min-width: 48px;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   height: 22px;
   display: flex;
   align-items: center;
