@@ -9,6 +9,7 @@ import { DesktopIcon } from "@/types/icon";
 import { IconType } from "@/types/iconType";
 import Taskbar from "@/components/Taskbar";
 import PasswordPrompt from "@/components/PasswordPrompt";
+import { simulateLoadingCursor } from "@/utils/simulateLoadingCursor";
 
 export default function Desktop() {
   const [icons, setIcons] = useState<DesktopIcon[]>([]);
@@ -20,33 +21,48 @@ export default function Desktop() {
     fetchIcons().then(setIcons);
   }, []);
 
-  useEffect(() => {
-    const body = document.body;
-    if (isLoading) {
-      body.classList.add("loading");
-    } else {
-      body.classList.remove("loading");
-    }
-  }, [isLoading]);
+  // useEffect(() => {
+  //   const body = document.body;
+  //   if (isLoading) {
+  //     body.classList.add("loading");
+  //   } else {
+  //     body.classList.remove("loading");
+  //   }
+  // }, [isLoading]);
 
   const handlePasswordSuccess = () => {
   console.log("Action validée pour l’icône :", openApp?.title);
   // ici tu pourras appeler une méthode attachée à l’icône plus tard
 };
 
-  const handleIconDoubleClick = (icon: DesktopIcon) => {
-    setIsLoading(true); // active le curseur de chargement
+const handleIconDoubleClick = async (icon: DesktopIcon) => {
+  const body = document.body;
+  //setIsLoading(true);
 
-    setTimeout(() => {
-      setIsLoading(false); // désactive après 500ms
+  await simulateLoadingCursor(Math.random() * 5000 + 2000); // entre 500 et 1000ms
 
-      if (icon.type === IconType.Redirect) {
-        window.open(icon.target, "_blank");
-      } else if (icon.type === IconType.Page) {
-        setOpenApp(icon);
-      }
-    }, Math.random() * 500 + 500); // délai aléatoire entre 500 et 1000 ms
-  };
+  body.classList.remove("loading");
+
+  if (icon.type === IconType.Redirect) {
+    window.open(icon.target, "_blank");
+  } else if (icon.type === IconType.Page) {
+    setOpenApp(icon);
+  }
+};
+
+  // const handleIconDoubleClick = (icon: DesktopIcon) => {
+  //   setIsLoading(true); // active le curseur de chargement
+
+  //   setTimeout(() => {
+  //     setIsLoading(false); // désactive après 500ms
+
+  //     if (icon.type === IconType.Redirect) {
+  //       window.open(icon.target, "_blank");
+  //     } else if (icon.type === IconType.Page) {
+  //       setOpenApp(icon);
+  //     }
+  //   }, Math.random() * 500 + 500); // délai aléatoire entre 500 et 1000 ms
+  // };
 
   return (
     <div 

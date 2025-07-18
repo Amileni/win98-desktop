@@ -1,25 +1,29 @@
-export function simulateLoadingCursor(
-  onComplete: () => void,
-  options?: { min?: number; max?: number }
-) {
-  const cursors = ['wait', 'progress', 'default'];
-  const count = Math.floor(Math.random() * 3) + 3;
-  let current = 0;
+export async function simulateLoadingCursor(durationMs = 5000) {
+  const body = document.body;
 
-  const run = () => {
-    if (current >= count) {
-      document.body.style.cursor = 'default';
-      onComplete();
-      return;
+  const originalCursor = body.style.cursor;
+  const variations = ['wait', 'default'];
+
+  const changeCount = Math.floor(Math.random() * 5) + 7; // 7 à 9 changements
+  let elapsed = 0;
+
+  for (let i = 0; i < changeCount && elapsed < durationMs; i++) {
+    const delay = Math.floor(Math.random() * 400) + 100; // entre 100ms et 500ms
+    elapsed += delay;
+
+    // Alterne entre wait et default en modifiant la classe
+    if (i % variations.length) {
+      body.classList.remove("loading");
+    } else {
+      body.classList.add("loading");
     }
 
-    const nextCursor = cursors[Math.floor(Math.random() * cursors.length)];
-    document.body.style.cursor = nextCursor;
-    current++;
+    console.log("switching cursor (step", i + 1, "/", changeCount, ")");
 
-    const delay = Math.random() * ((options?.max ?? 200) - (options?.min ?? 100)) + (options?.min ?? 100);
-    setTimeout(run, delay);
-  };
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
 
-  run();
+  // Réinitialise après la simulation
+  body.classList.remove("loading");
+  body.style.cursor = originalCursor;
 }
