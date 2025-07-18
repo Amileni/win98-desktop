@@ -12,19 +12,26 @@ export async function GET() {
     },
     {
       id: "2",
+      title: "Thingiverse",
+      imageUrl: "/icons/thingiverse.png",
+      type: IconType.Redirect,
+      target: "https://www.thingiverse.com/amileni/designs"
+    },
+    {
+      id: "3",
       title: "GitHub",
       imageUrl: "/icons/icon-github.png",
       type: IconType.Redirect,
       target: "https://github.com/Amileni/win98-desktop"
     },
     {
-      id: "3",
+      id: "4",
       title: "Desktop",
       imageUrl: "/icons/computer.png",
       type: IconType.Page
     },
     {
-      id: "4",
+      id: "5",
       title: "Recycle Bin",
       imageUrl: "/icons/trash.png",
       type: IconType.Page
