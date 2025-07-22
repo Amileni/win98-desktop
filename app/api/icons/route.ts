@@ -26,12 +26,18 @@ export async function GET() {
     },
     {
       id: "4",
+      title: "Minesweeper",
+      imageUrl: "/icons/mine.png",
+      type: IconType.Page
+    },
+    {
+      id: "5",
       title: "Desktop",
       imageUrl: "/icons/computer.png",
       type: IconType.Page
     },
     {
-      id: "5",
+      id: "6",
       title: "Recycle Bin",
       imageUrl: "/icons/trash.png",
       type: IconType.Page

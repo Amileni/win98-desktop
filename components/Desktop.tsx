@@ -10,6 +10,7 @@ import { IconType } from "@/types/iconType";
 import Taskbar from "@/components/Taskbar";
 import PasswordPrompt from "@/components/PasswordPrompt";
 import { simulateLoadingCursor } from "@/utils/simulateLoadingCursor";
+import MiniSweeper from "./Minesweeper";
 
 export default function Desktop() {
   const [icons, setIcons] = useState<DesktopIcon[]>([]);
@@ -86,14 +87,16 @@ const handleIconDoubleClick = async (icon: DesktopIcon) => {
 
       {openApp && (
         <Window title={openApp.title} onClose={() => setOpenApp(null)}>
-          <PasswordPrompt 
+          {
+            <MiniSweeper/>
+          /* <PasswordPrompt 
             iconId={openApp.id}
             onSuccess={() => {
               console.log("Action réussie pour :", openApp.title);
               // Ici tu pourras ajouter la logique spécifique à chaque icône plus tard
               setOpenApp(null); // on ferme la fenêtre après succès
             }} 
-          />
+          /> */}
         </Window>
       )}
       <Taskbar />
