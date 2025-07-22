@@ -39,7 +39,7 @@ const handleIconDoubleClick = async (icon: DesktopIcon) => {
   const body = document.body;
   //setIsLoading(true);
 
-  await simulateLoadingCursor(Math.random() * 5000 + 2000); // entre 500 et 1000ms
+  await simulateLoadingCursor(Math.floor(Math.random() * 4000) + 1000); // durée aléatoire entre 1000 et 5000 ms
 
   body.classList.remove("loading");
 

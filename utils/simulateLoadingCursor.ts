@@ -1,29 +1,43 @@
 export async function simulateLoadingCursor(durationMs = 5000) {
   const body = document.body;
-
   const originalCursor = body.style.cursor;
   const variations = ['wait', 'default'];
 
-  const changeCount = Math.floor(Math.random() * 5) + 7; // 7 à 9 changements
-  let elapsed = 0;
+  const changeCount = Math.floor(Math.random() * 5) + 7; // 7 à 11 changements
 
-  for (let i = 0; i < changeCount && elapsed < durationMs; i++) {
-    const delay = Math.floor(Math.random() * 400) + 100; // entre 100ms et 500ms
-    elapsed += delay;
+  // Générer des poids aléatoires
+  const weights: number[] = [];
+  let totalWeight = 0;
+  for (let i = 0; i < changeCount; i++) {
+    const w = Math.random();
+    weights.push(w);
+    totalWeight += w;
+  }
 
-    // Alterne entre wait et default en modifiant la classe
+  // Convertir en délais
+  const delays = weights.map(w => Math.round((w / totalWeight) * durationMs));
+
+  // Corriger l’écart d’arrondi (somme exacte = durationMs)
+  const totalDelay = delays.reduce((sum, d) => sum + d, 0);
+  const correction = durationMs - totalDelay;
+  delays[0] += correction;
+
+  console.log("Duration target:", durationMs, "ms. Final delay sum:", delays.reduce((a, b) => a + b), "ms");
+
+  // Boucle avec délais
+  for (let i = 0; i < changeCount; i++) {
     if (i % variations.length) {
       body.classList.remove("loading");
     } else {
       body.classList.add("loading");
     }
 
-    console.log("switching cursor (step", i + 1, "/", changeCount, ")");
+    console.log(`Switching cursor (step ${i + 1}/${changeCount}) for ${delays[i]} ms`);
 
-    await new Promise((resolve) => setTimeout(resolve, delay));
+    await new Promise(resolve => setTimeout(resolve, delays[i]));
   }
 
-  // Réinitialise après la simulation
+  // Réinitialise
   body.classList.remove("loading");
   body.style.cursor = originalCursor;
 }

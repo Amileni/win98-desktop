@@ -14,7 +14,7 @@ body {
 }
 
 body.loading {
-  cursor: url("/cursors/win98-hourglass.cur"), wait !important;
+  cursor: url("/cursors/win98-loading.cur"), wait !important;
 }
 
 button {
